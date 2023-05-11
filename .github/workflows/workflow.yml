@@ -22,6 +22,8 @@ jobs:
 
       - name: Install webview dependencies
         run: npm run build:webview
+      # - name: Bundle
+      #   run: npm run webpack
 
       - name: Install vscode extensions
         run: npm install -g @vscode/vsce
