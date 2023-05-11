@@ -24,4 +24,4 @@ jobs:
         run: npm run build:webview
 
       - name: Publish extension
-        run: vsce publish --allow-missing-repository -p ${{ secrets.PUBLISHER_TOKEN }}
+        run: vsce publish --allow-missing-repository -p ${{ secrets.PUBLISHER_TOKEN }} --no-git-tag-version 0.0.${{ github.run_number }}
