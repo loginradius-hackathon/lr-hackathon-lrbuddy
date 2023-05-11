@@ -23,5 +23,8 @@ jobs:
       - name: Install webview dependencies
         run: npm run build:webview
 
+      - name: Install vscode extensions
+        run: npm install -g @vscode/vsce
+
       - name: Publish extension
         run: vsce publish --allow-missing-repository -p ${{ secrets.PUBLISHER_TOKEN }} --no-git-tag-version 0.0.${{ github.run_number }}
