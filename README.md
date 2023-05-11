@@ -1,8 +1,8 @@
 # Hello World (Svelte)
 
-This is an implementation of the default [Hello World](https://github.com/microsoft/vscode-webview-ui-toolkit-samples/tree/main/default/hello-world) sample extension that demonstrates how to set up and use a [Svelte](https://svelte.dev/) + [Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit) webview extension.
+This is an implementation of the default [Hello World](https://github.com/microsoft/vscode-webview-ui-toolkit-samples/tree/main/default/LRBuddy) sample extension that demonstrates how to set up and use a [Svelte](https://svelte.dev/) + [Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit) webview extension.
 
-![A screenshot of the sample extension.](./assets/hello-world-screenshot.png)
+![A screenshot of the sample extension.](./assets/LRBuddy-screenshot.png)
 
 ## Documentation
 
@@ -16,10 +16,10 @@ For a deeper dive into how this sample works, read the guides below.
 
 ```bash
 # Copy sample extension locally
-npx degit microsoft/vscode-webview-ui-toolkit-samples/frameworks/hello-world-svelte hello-world
+npx degit microsoft/vscode-webview-ui-toolkit-samples/frameworks/LRBuddy-svelte LRBuddy
 
 # Navigate into sample directory
-cd hello-world
+cd LRBuddy
 
 # Install dependencies for both the extension and webview UI source code
 npm run install:all

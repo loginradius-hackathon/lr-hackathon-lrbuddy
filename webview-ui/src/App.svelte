@@ -42,7 +42,7 @@
 </script>
 
 <main>
-  <h1>Hello world!</h1>
+  <h1>LRBuddy!</h1>
   <vscode-button on:click={handleHowdyClick}>Howdy!</vscode-button>
   {#if counter > 0}
     <div>counter: {counter}</div>

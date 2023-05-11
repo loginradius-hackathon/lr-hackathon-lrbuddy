@@ -5,7 +5,7 @@ const vscode_1 = require("vscode");
 const HelloWorldPanel_1 = require("./panels/HelloWorldPanel");
 function activate(context) {
     // Create the show hello world command
-    const showHelloWorldCommand = vscode_1.commands.registerCommand("hello-world.showHelloWorld", () => {
+    const showHelloWorldCommand = vscode_1.commands.registerCommand("LRBuddy.chat", () => {
         HelloWorldPanel_1.HelloWorldPanel.render(context.extensionUri);
     });
     // Add command to the extension context

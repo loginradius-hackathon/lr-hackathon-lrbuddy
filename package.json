@@ -1,7 +1,7 @@
 {
-  "name": "hello-world-svelte",
-  "displayName": "hello-world-svelte",
-  "description": "A hello world sample extension to demonstrate using Svelte with the Webview UI Toolkit for VS Code.",
+  "name": "LRBuddy",
+  "displayName": "LRBuddy",
+  "description": "A chatbot to help you integrateLoginRadius",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.46.0"
@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:hello-world.showHelloWorld"
+    "onCommand:LRBuddy.chat"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "hello-world.showHelloWorld",
-        "title": "Hello World (Svelte): Show"
+        "command": "LRBuddy.chat",
+        "title": "LRBuddy Chat"
       }
     ]
   },
