@@ -13,7 +13,7 @@
   "activationEvents": [
     "onCommand:LRBuddy.chat"
   ],
-  "main": "./dist/node/main.js",
+  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
