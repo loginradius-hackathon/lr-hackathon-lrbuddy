@@ -144,7 +144,7 @@ class HelloWorldPanel {
                     // Code that should run in response to the hello message command
                     // window.showInformationMessage(text);
                     //TODO: get result from NLP
-                    const response = yield manager.process('en', text);
+                    const response = yield manager.process('en', 'I should go now');
                     console.log(response);
                     webview.postMessage({
                         command: "bot_msg",
