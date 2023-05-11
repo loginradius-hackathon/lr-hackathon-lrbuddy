@@ -1,7 +1,11 @@
 import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vscode";
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
-
+import * as fs from 'fs';
+import { NlpManager } from 'node-nlp';
+// const data = fs.readFileSync('../utilities/model.nlp', 'utf8');
+// const manager = new NlpManager();
+// manager.import(data);
 /**
  * This class manages the state and behavior of HelloWorld webview panels.
  *
@@ -133,7 +137,7 @@ export class HelloWorldPanel {
    */
   private _setWebviewMessageListener(webview: Webview) {
     webview.onDidReceiveMessage(
-      (message: any) => {
+      async (message: any) => {
         const command = message.command;
         const text = message.text;
 
@@ -142,9 +146,12 @@ export class HelloWorldPanel {
             // Code that should run in response to the hello message command
             // window.showInformationMessage(text);
             //TODO: get result from NLP
+            const response = "some random text"
+            // await manager.process('en', 'I should go now');
+            console.log(response);
             webview.postMessage({
               command: "bot_msg",
-              text: "Hey there partner! 🤠",
+              text: response,
             });
             return;
           // Add more switch case statements here as more webview message commands

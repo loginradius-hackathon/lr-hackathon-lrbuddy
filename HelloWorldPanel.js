@@ -49,7 +49,7 @@ class HelloWorldPanel {
             // Panel view type
             "chat", 
             // Panel title
-            "LRBuddy
+            "LRBuddy", 
             // The editor column the panel should be displayed in
             vscode_1.ViewColumn.One, 
             // Extra panel configurations

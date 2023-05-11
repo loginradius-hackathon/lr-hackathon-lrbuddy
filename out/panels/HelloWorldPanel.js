@@ -1,9 +1,21 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HelloWorldPanel = void 0;
 const vscode_1 = require("vscode");
 const getUri_1 = require("../utilities/getUri");
 const getNonce_1 = require("../utilities/getNonce");
+// const data = fs.readFileSync('../utilities/model.nlp', 'utf8');
+// const manager = new NlpManager();
+// manager.import(data);
 /**
  * This class manages the state and behavior of HelloWorld webview panels.
  *
@@ -119,7 +131,7 @@ class HelloWorldPanel {
      * @param context A reference to the extension context
      */
     _setWebviewMessageListener(webview) {
-        webview.onDidReceiveMessage((message) => {
+        webview.onDidReceiveMessage((message) => __awaiter(this, void 0, void 0, function* () {
             const command = message.command;
             const text = message.text;
             switch (command) {
@@ -127,15 +139,18 @@ class HelloWorldPanel {
                     // Code that should run in response to the hello message command
                     // window.showInformationMessage(text);
                     //TODO: get result from NLP
+                    const response = "some random text";
+                    // await manager.process('en', 'I should go now');
+                    console.log(response);
                     webview.postMessage({
                         command: "bot_msg",
-                        text: "Hey there partner! 🤠",
+                        text: response,
                     });
                     return;
                 // Add more switch case statements here as more webview message commands
                 // are created within the webview context (i.e. inside media/main.js)
             }
-        }, undefined, this._disposables);
+        }), undefined, this._disposables);
     }
 }
 exports.HelloWorldPanel = HelloWorldPanel;

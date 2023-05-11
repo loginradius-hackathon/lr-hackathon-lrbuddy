@@ -35,7 +35,7 @@
 
       switch (message.command) {
         case "bot_msg":
-          counter++;
+          counter = message.text;
       }
     });
   });
@@ -44,9 +44,8 @@
 <main>
   <h1>LRBuddy!</h1>
   <vscode-button on:click={handleHowdyClick}>Howdy!</vscode-button>
-  {#if counter > 0}
+  
     <div>counter: {counter}</div>
-  {/if}
   <vscode-text-field />
 </main>
 
