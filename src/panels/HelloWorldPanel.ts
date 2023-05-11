@@ -149,7 +149,7 @@ export class HelloWorldPanel {
             // Code that should run in response to the hello message command
             // window.showInformationMessage(text);
             //TODO: get result from NLP
-            const response = await manager.process('en', 'I should go now');
+            const response = await manager.process('en', text);
             console.log(response);
             webview.postMessage({
               command: "bot_msg",
