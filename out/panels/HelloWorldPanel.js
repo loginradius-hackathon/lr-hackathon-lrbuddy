@@ -13,9 +13,14 @@ exports.HelloWorldPanel = void 0;
 const vscode_1 = require("vscode");
 const getUri_1 = require("../utilities/getUri");
 const getNonce_1 = require("../utilities/getNonce");
-// const data = fs.readFileSync('../utilities/model.nlp', 'utf8');
-// const manager = new NlpManager();
-// manager.import(data);
+const fs = require("fs");
+const path = require("path");
+const node_nlp_1 = require("node-nlp");
+const filepath = path.join(__dirname, '../utilities/model.nlp');
+console.log({ filepath });
+const data = fs.readFileSync(filepath, 'utf8');
+const manager = new node_nlp_1.NlpManager();
+manager.import(data);
 /**
  * This class manages the state and behavior of HelloWorld webview panels.
  *
@@ -139,8 +144,7 @@ class HelloWorldPanel {
                     // Code that should run in response to the hello message command
                     // window.showInformationMessage(text);
                     //TODO: get result from NLP
-                    const response = "some random text";
-                    // await manager.process('en', 'I should go now');
+                    const response = yield manager.process('en', text);
                     console.log(response);
                     webview.postMessage({
                         command: "bot_msg",

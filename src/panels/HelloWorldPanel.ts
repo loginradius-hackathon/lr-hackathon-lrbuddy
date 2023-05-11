@@ -2,10 +2,13 @@ import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vsco
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
 import * as fs from 'fs';
+import * as path from 'path'
 import { NlpManager } from 'node-nlp';
-// const data = fs.readFileSync('../utilities/model.nlp', 'utf8');
-// const manager = new NlpManager();
-// manager.import(data);
+const filepath = path.join(__dirname,'../utilities/model.nlp')
+console.log({filepath})
+const data = fs.readFileSync(filepath, 'utf8');
+const manager = new NlpManager();
+manager.import(data);
 /**
  * This class manages the state and behavior of HelloWorld webview panels.
  *
@@ -146,8 +149,7 @@ export class HelloWorldPanel {
             // Code that should run in response to the hello message command
             // window.showInformationMessage(text);
             //TODO: get result from NLP
-            const response = "some random text"
-            // await manager.process('en', 'I should go now');
+            const response = await manager.process('en', 'I should go now');
             console.log(response);
             webview.postMessage({
               command: "bot_msg",

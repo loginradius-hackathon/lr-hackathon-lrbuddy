@@ -2,6 +2,8 @@
   import { provideVSCodeDesignSystem, vsCodeButton, vsCodeTextField } from "@vscode/webview-ui-toolkit";
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
+  let userInput;
+ 
 
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
@@ -23,30 +25,42 @@
   // provideVSCodeDesignSystem().register(allComponents);
 
   function handleHowdyClick() {
+    console.log("inside handle howdy click")
+    console.log({"user input": userInput.value})
     vscode.postMessage({
       command: "user_msg",
-      text: "user prompt",
+      text: userInput.value,
     });
   }
   let counter = 0;
   onMount(() => {
     window.addEventListener("message", (event) => {
       const message = event.data; // The JSON data our extension sent
-
+      console.log({message})
       switch (message.command) {
         case "bot_msg":
-          counter = message.text;
+          counter = message.text.answer;
       }
     });
+    userInput.onkeydown = function (e) {
+    console.log("enter event called");
+    e = e || window.event;
+    switch (e.which || e.keyCode) {
+      case 13: //Your Code Here (13 is ascii code for 'ENTER')
+        console.log("enter pressed");
+        handleHowdyClick()
+        break;
+    }
+  };
   });
 </script>
 
 <main>
-  <h1>LRBuddy!</h1>
-  <vscode-button on:click={handleHowdyClick}>Howdy!</vscode-button>
+  <h1>Ankit</h1>
   
-    <div>counter: {counter}</div>
-  <vscode-text-field />
+  <div>counter: {counter}</div>
+  <vscode-text-field bind:this={userInput} /><br/>
+  <vscode-button on:click={handleHowdyClick}>Howdy!</vscode-button>
 </main>
 
 <style>
