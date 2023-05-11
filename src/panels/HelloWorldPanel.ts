@@ -138,9 +138,14 @@ export class HelloWorldPanel {
         const text = message.text;
 
         switch (command) {
-          case "hello":
+          case "user_msg":
             // Code that should run in response to the hello message command
-            window.showInformationMessage(text);
+            // window.showInformationMessage(text);
+            //TODO: get result from NLP
+            webview.postMessage({
+              command: "bot_msg",
+              text: "Hey there partner! 🤠",
+            });
             return;
           // Add more switch case statements here as more webview message commands
           // are created within the webview context (i.e. inside media/main.js)
