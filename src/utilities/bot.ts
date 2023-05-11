@@ -26,7 +26,6 @@ LRObject.util.ready(function() {
 LRObject.init("registration",registration_options);
 })
 
-
 Container
 
 <div id="registration-container"></div>`
