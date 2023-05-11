@@ -1,7 +1,7 @@
 {
   "name": "LRB",
   "displayName": "LRB",
-  "description": "A chatbot to help you integrateLoginRadius",
+  "description": "A chatbot to help you integrate LoginRadius",
   "version": "0.0.1",
   "publisher": "LRB",
   "engines": {
@@ -25,7 +25,7 @@
   "scripts": {
     "install:all": "npm install && cd webview-ui && npm install",
     "start:webview": "cd webview-ui && npm run dev",
-    "build:webview": "npm run gm && cd webview-ui && npm run build",
+    "build:webview": "npm run compile && npm run gm && cd webview-ui && npm run build",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
