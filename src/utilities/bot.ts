@@ -1,23 +1,39 @@
-import {NlpManager} from 'node-nlp';
-const manager = new NlpManager({ languages: ['en'] });
+import { NlpManager } from "node-nlp";
+import * as path from "path";
+const manager = new NlpManager({ languages: ["en"] });
 // Adds the utterances and intents for the NLP
-manager.addDocument('en', 'goodbye for now', 'greetings.bye');
-manager.addDocument('en', 'bye bye take care', 'greetings.bye');
-manager.addDocument('en', 'okay see you later', 'greetings.bye');
-manager.addDocument('en', 'bye for now', 'greetings.bye');
-manager.addDocument('en', 'i must go', 'greetings.bye');
-manager.addDocument('en', 'hello', 'greetings.hello');
-manager.addDocument('en', 'hi', 'greetings.hello');
-manager.addDocument('en', 'howdy', 'greetings.hello');
+manager.addDocument("en", "How I can signup in LR?", "agent.signup");
+manager.addDocument("en", "Code to Register", "agent.signup");
+manager.addDocument("en", "Code to Account Registration", "agent.signup");
+
+
 
 // Train also the NLG
-manager.addAnswer('en', 'greetings.bye', 'Till next time');
-manager.addAnswer('en', 'greetings.bye', 'see you soon!');
-manager.addAnswer('en', 'greetings.hello', 'Hey there!');
-manager.addAnswer('en', 'greetings.hello', 'Greetings!');
+manager.addAnswer(
+  "en",
+  "agent.signup",
+  `var registration_options = {}
+registration_options.onSuccess = function(response) {
+//On Success
+console.log(response);
+};
+registration_options.onError = function(errors) {
+//On Errors
+console.log(errors);
+};
+registration_options.container = "registration-container";
+LRObject.util.ready(function() {
+LRObject.init("registration",registration_options);
+})
 
-(async() => {
+
+Container
+
+<div id="registration-container"></div>`
+);
+
+
+(async () => {
   await manager.train();
- 
- 
+  manager.save(path.join(__dirname, "../../out/utilities/model.nlp"));
 })();

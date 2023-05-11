@@ -56,9 +56,9 @@
 </script>
 
 <main>
-  <h1>Ankit</h1>
+  <h1>LRBuddy</h1>
   
-  <div>counter: {counter}</div>
+  <pre>{ counter}</pre>
   <vscode-text-field bind:this={userInput} /><br/>
   <vscode-button on:click={handleHowdyClick}>Howdy!</vscode-button>
 </main>
