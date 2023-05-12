@@ -1,1 +1,0 @@
-<div>LRBuddy 2</div>
