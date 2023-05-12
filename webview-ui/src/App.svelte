@@ -3,8 +3,8 @@
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
   import UserInput from "./UserInput.svelte";
-  import Header from "./Header.svelte";
   import Message from "./Message.svelte";
+  import Banner from "./Banner.svelte";
   let userInput;
 
   // In order to use the Webview UI Toolkit web components they
@@ -58,7 +58,7 @@
 </script>
 
 <main>
-  <Header />
+  <Banner/>
   <div class="msg"><Message /></div>
   <div class="user_input"><UserInput /></div>
 </main>
@@ -67,15 +67,16 @@
   main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 600px;
+    
+    height: 800px;
   }
   .msg {
     flex: 1;
   }
-  .user_input {
-    position: relative;
-    bottom: 0px;
+  /* .user_input {
+  } */
+  main{
+
+    margin: 4px;
   }
 </style>

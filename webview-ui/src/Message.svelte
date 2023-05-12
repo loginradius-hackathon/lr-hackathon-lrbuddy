@@ -3,7 +3,7 @@
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
   import { msgStore } from "./store";
-  import { each, tick } from "svelte/internal";
+  import { tick } from "svelte/internal";
 
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
@@ -30,64 +30,85 @@
       console.log({ message });
       switch (message.command) {
         case "bot_msg":
-          const answer = message.text.answer || ["I didn't get you, can you try with a different prompt"]
-          const result = answer.map(msg => {
+          const answer = message?.text?.answer || ["I didn't get you, can you try with a different prompt"];
+          const result = answer.map((msg) => {
             return {
               by: "bot",
-              msg
-            }
-          })
+              msg,
+            };
+          });
           $msgStore = [...$msgStore, ...result];
       }
     });
-    msgStore.subscribe(async() => {
-      await tick()
+    msgStore.subscribe(async () => {
+      await tick();
       console.log("scrolling logic called");
-      var El = document.getElementById('msgs')
-      El.scrollTo({top: El.scrollHeight, behavior: 'smooth'});
-    
+      var El = document.getElementById("msgs");
+      El.scrollTo({ top: El.scrollHeight, behavior: "smooth" });
     });
   });
+
+  function copyToClipboard(data) {
+    navigator.clipboard.writeText(data);
+  }
 </script>
 
 <div class="msgs" id="msgs">
   {#each $msgStore as data, index}
-    <div
-      class:botmsg={data.by === "bot"}
-      class:usermsg={data.by === "user"}
-    >
-      <pre>{data.msg}</pre>
+    <div class:botmsg={data.by === "bot"} class:usermsg={data.by === "user"}>
+      <pre>
+        <code>
+
+          {data.msg}
+        </code>
+      </pre>
+      {#if data.by === "bot"}
+       <vscode-button class="copy" on:click={() => copyToClipboard(data.msg)}>copy</vscode-button>
+      {/if}
     </div>
   {/each}
-  <div id="bottom"></div>
+  <div id="bottom" />
 </div>
 
 <style>
   .msgs {
-    height: 600px;
-    position:relative;
+    height: 800px;
+    overflow: scroll;
+  }
+  pre, div{
+    margin: 0px 0px;
+    padding: 0px 0px;
+  }
+  pre, code {
+    white-space: pre-line;
+  }
+  .usermsg,
+  .botmsg {
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom:5px;
+    text-align: left;
+    width: 80%;
+    border-radius: 10px;
+
     overflow: scroll;
   }
   .usermsg {
-    width: 80%;
     margin-left: auto;
     text-align: right;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    padding-left:4px;
-    padding-right: 4px;
-    overflow: scroll;
-    /* background-color: #e1730c; */
+    border: 1px solid var(--vscode-editor-foreground);
   }
   .botmsg {
     width: 80%;
-    /* background-color: #deac17; */
-    margin-top: 3px;
-    margin-bottom: 3px;
-    padding-left:4px;
-    padding-right: 4px;
-    overflow: scroll;
-    border-radius: 10px;
 
+    border: 1px solid var(--vscode-editor-foreground);
+    border-radius: 10px;
+  }
+  .copy {
+   margin-top: 5px;
+    align-self: flex-end;
   }
 </style>

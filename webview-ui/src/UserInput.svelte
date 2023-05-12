@@ -54,8 +54,10 @@
 
 <div class="user_input">
 
-  <vscode-text-field bind:this={userInput} size="50" /><br/>
-  <vscode-button on:click={handleHowdyClick}>Send</vscode-button>
+  <vscode-text-field bind:this={userInput} size="50" placeholder="Let's integrate LR :) " >
+  <span slot="start" class="codicon codicon-git-merge"></span></vscode-text-field>
+  <br/>
+  <vscode-button on:click={handleHowdyClick} >Send</vscode-button>
 </div>
 
 
