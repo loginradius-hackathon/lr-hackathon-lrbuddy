@@ -14,7 +14,25 @@ manager.addDocument("en", "Code to Account creation", "agent.signup");
 manager.addAnswer(
   "en",
   "agent.signup",
-  `var registration_options = {}
+  [
+    `//Follow these steps to configure the widget Add the Customer Registration JS in header section.
+    
+    <script src=https://auth.lrcontent.com/v2/LoginRadiusV2.js  type='text/javascript' ></script>`,
+
+    `// Copy the code below and paste it before the </head> tag. If you already added that code then skip this step.
+
+    <script> 
+var commonOptions = {};
+commonOptions.apiKey = '<APIKEY>';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;commonOptions.verificationEmailTemplate='pawan.dixit@loginradius.com';commonOptions.verificationUrl='pawan.dixit@loginradius.com';
+var  LRObject = new LoginRadiusV2(commonOptions);
+</script>
+    `,
+
+    `
+    // Copy the code below and paste it before the </head> tag.
+    
+    var registration_options = {}
 registration_options.onSuccess = function(response) {
 //On Success
 console.log(response);
@@ -29,9 +47,9 @@ LRObject.init("registration",registration_options);
 })
 
 
-Container
+Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
 
-<div id="registration-container"></div>`
+<div id="registration-container"></div>`]
 );
 
 // sign in
@@ -47,7 +65,27 @@ manager.addDocument("en", "code to Access request?", "agent.signin");
 manager.addAnswer(
   "en",
   "agent.signin",
-  `var login_options = {};
+  [
+    `// Follow these steps to configure the widget Add the Customer Registration JS in header section.
+    
+    <script src=https://auth.lrcontent.com/v2/LoginRadiusV2.js  type='text/javascript' ></script>
+    `,
+
+    `
+    // Copy the code below and paste it before the </head> tag. If you already added that code then skip this step.
+
+    <script> 
+var commonOptions = {};
+commonOptions.apiKey = '<APIKEY>';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;
+var  LRObject = new LoginRadiusV2(commonOptions);
+</script>
+    
+    `,
+
+    `Copy the code below and paste it before the </head> tag.
+    
+    var login_options = {};
   login_options.onSuccess = function(response) {
   //On Success
   console.log(response);
@@ -61,12 +99,13 @@ manager.addAnswer(
   LRObject.util.ready(function() {
   LRObject.init("login",login_options);
   })
-  
-  container
-  
-  <div id="login-container"></div>`
-  );
-  
+    `,
+    `Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
+    <div id="login-container"></div>`]
+
+
+);
+
 // ForgetPassword
 
 manager.addDocument("en", "How I can Forgot Password in LR?", "agent.forgotpassword");
@@ -80,7 +119,23 @@ manager.addDocument("en", "code to Password reminder?", "agent.forgotpassword");
 manager.addAnswer(
   "en",
   "agent.forgotpassword",
-  [`var forgotpassword_options = {};
+  [`//Follow these steps to configure the widget Add the Customer Registration JS in header section.
+
+  <script src=https://auth.lrcontent.com/v2/LoginRadiusV2.js  type='text/javascript' ></script>`,
+
+    `// Copy the code below and paste it before the </head> tag. If you already added that code then skip this step.
+
+<script> 
+var commonOptions = {};
+commonOptions.apiKey = '<APIKEY>';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;
+var  LRObject = new LoginRadiusV2(commonOptions);
+</script>`,
+    `
+  // Copy the code below and paste it before the </head> tag.
+
+  <script>
+var forgotpassword_options = {};
   forgotpassword_options.container = "forgotpassword-container";
   forgotpassword_options.onSuccess = function(response) {
   // On Success
@@ -94,11 +149,13 @@ manager.addAnswer(
   LRObject.util.ready(function() {
   LRObject.init("forgotPassword", forgotpassword_options);
   });
+  </script>
   
-  container
+  // Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
   
-  <div id="forgotpassword-container"></div>`,`<This is another snippet>`, `<This is third snippet>`]
-  );
+  <div id="forgotpassword-container"></div>`
+  ]
+);
 
 // ResetPassword
 
@@ -113,7 +170,31 @@ manager.addDocument("en", "code to Password revalidation?", "agent.resetpassword
 manager.addAnswer(
   "en",
   "agent.resetpassword",
-  `var resetpassword_options = {};
+  [
+
+    `
+    // Follow these steps to configure the widget Add the Customer Registration JS in header section.
+    
+    <script src=https://auth.lrcontent.com/v2/LoginRadiusV2.js  type='text/javascript' ></script>
+    `,
+
+    `
+    // Copy the code below and paste it before the </head> tag. If you already added that code then skip this step.
+
+    <script> 
+var commonOptions = {};
+commonOptions.apiKey = '<APIKEY>';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;
+var  LRObject = new LoginRadiusV2(commonOptions);
+</script>
+    
+    `,
+
+
+    `
+// Copy the code below and paste it before the </head> tag.
+  
+  var resetpassword_options = {};
   resetpassword_options.container = "resetpassword-container";
   resetpassword_options.onSuccess = function(response) {
   // On Success
@@ -128,11 +209,11 @@ manager.addAnswer(
   LRObject.init("resetPassword", resetpassword_options);
   });
   
-  container
+  // Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
   
   
-  <div id="resetpassword-container"></div>`
-  );
+  <div id="resetpassword-container"></div>`]
+);
 
 // VerifyEmail
 
@@ -147,7 +228,30 @@ manager.addDocument("en", "code to Email validation check?", "agent.verifyemail"
 manager.addAnswer(
   "en",
   "agent.verifyemail",
-  `var verifyemail_options = {};
+  [
+
+    `
+    // Follow these steps to configure the widget Add the Customer Registration JS in header section.
+
+    <script src=https://auth.lrcontent.com/v2/LoginRadiusV2.js  type='text/javascript' ></script>
+
+    `,
+    `
+// Copy the code below and paste it before the </head> tag. If you already added that code then skip this step.
+
+<script> 
+var commonOptions = {};
+commonOptions.apiKey = '<APPKEY>';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;
+var  LRObject = new LoginRadiusV2(commonOptions);
+</script>
+
+`,
+
+    `
+  // Copy the code below and paste it before the </head> tag.
+  
+  var verifyemail_options = {};
   verifyemail_options.onSuccess = function(response) {
   // On Success
   console.log(response);
@@ -159,8 +263,8 @@ manager.addAnswer(
   
   LRObject.util.ready(function() {
   LRObject.init("verifyEmail", verifyemail_options);
-  });`
-  );
+  });`]
+);
 
 
 (async () => {
