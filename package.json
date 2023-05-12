@@ -1,9 +1,10 @@
 {
-  "name": "LRB",
-  "displayName": "LRB",
+  "name": "LRBuddy(Beta)",
+  "displayName": "LRBuddy(Beta)",
   "description": "A chatbot to help you integrate LoginRadius",
   "version": "0.0.1",
   "publisher": "LRB",
+  "icon": "images/LRBuddy.png",
   "engines": {
     "vscode": "^1.46.0"
   },
