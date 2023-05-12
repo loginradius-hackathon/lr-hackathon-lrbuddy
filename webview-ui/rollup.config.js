@@ -41,16 +41,7 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
-    postcss({
-      config: {
-        path: './postcss.config.js',
-      },
-      extensions: ['.css'],
-      minimize: true,
-      inject: {
-        insertAt: 'top',
-      },
-    }),
+   
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {

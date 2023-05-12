@@ -2,11 +2,9 @@
   import { provideVSCodeDesignSystem, vsCodeButton, vsCodeTextField } from "@vscode/webview-ui-toolkit";
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
-  import UserInput from "./UserInput.svelte";
-  import Header from "./Header.svelte";
-  import Message from "./Message.svelte";
+  import { msgStore } from "./store";
   let userInput;
-
+ 
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
   // syntax below.
@@ -27,55 +25,42 @@
   // provideVSCodeDesignSystem().register(allComponents);
 
   function handleHowdyClick() {
-    console.log("inside handle howdy click");
-    console.log({ "user input": userInput.value });
+    console.log("inside handle howdy click")
+    console.log({"user input": userInput.value})
+    
+    $msgStore = [...$msgStore,{by: 'user', msg: userInput.value}]
     vscode.postMessage({
       command: "user_msg",
       text: userInput.value,
     });
+    userInput.value =""
   }
   let counter = 0;
   onMount(() => {
-    window.addEventListener("message", (event) => {
-      const message = event.data; // The JSON data our extension sent
-      console.log({ message });
-      switch (message.command) {
-        case "bot_msg":
-          counter = message.text.answer;
-      }
-    });
+ 
     userInput.onkeydown = function (e) {
-      console.log("enter event called");
-      e = e || window.event;
-      switch (e.which || e.keyCode) {
-        case 13: //Your Code Here (13 is ascii code for 'ENTER')
-          console.log("enter pressed");
-          handleHowdyClick();
-          break;
-      }
-    };
+    console.log("enter event called");
+    e = e || window.event;
+    switch (e.which || e.keyCode) {
+      case 13: //Your Code Here (13 is ascii code for 'ENTER')
+        console.log("enter pressed");
+        handleHowdyClick()
+        break;
+    }
+  };
   });
 </script>
 
-<main>
-  <Header />
-  <div class="msg"><Message /></div>
-  <div class="user_input"><UserInput /></div>
-</main>
+
+<div class="user_input">
+
+  <vscode-text-field bind:this={userInput} size="50" /><br/>
+  <vscode-button on:click={handleHowdyClick}>Send</vscode-button>
+</div>
+
 
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 600px;
-  }
-  .msg {
-    flex: 1;
-  }
-  .user_input {
-    position: relative;
-    bottom: 0px;
-  }
+.user_input {
+  display: flex
+}
 </style>

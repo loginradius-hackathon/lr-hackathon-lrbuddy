@@ -80,7 +80,7 @@ manager.addDocument("en", "code to Password reminder?", "agent.forgotpassword");
 manager.addAnswer(
   "en",
   "agent.forgotpassword",
-  `var forgotpassword_options = {};
+  [`var forgotpassword_options = {};
   forgotpassword_options.container = "forgotpassword-container";
   forgotpassword_options.onSuccess = function(response) {
   // On Success
@@ -97,7 +97,7 @@ manager.addAnswer(
   
   container
   
-  <div id="forgotpassword-container"></div>`
+  <div id="forgotpassword-container"></div>`,`<This is another snippet>`, `<This is third snippet>`]
   );
 
 // ResetPassword
