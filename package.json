@@ -1,6 +1,6 @@
 {
-  "name": "LRBuddy(Beta)",
-  "displayName": "LRBuddy(Beta)",
+  "name": "lrbuddy",
+  "displayName": "LRBuddy-Beta",
   "description": "A chatbot to help you integrate LoginRadius",
   "version": "0.0.1",
   "publisher": "LRB",
