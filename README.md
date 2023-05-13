@@ -1,28 +1,41 @@
-# Hello World (Svelte)
+# 🚀 LRBuddy 🚀: Integrate LoginRadius in Your application 
 
-This is an implementation of the default [Hello World](https://github.com/microsoft/vscode-webview-ui-toolkit-samples/tree/main/default/LRBuddy) sample extension that demonstrates how to set up and use a [Svelte](https://svelte.dev/) + [Webview UI Toolkit](https://github.com/microsoft/vscode-webview-ui-toolkit) webview extension.
+## How LRBuddy helps you
+---
+- LRBuddy is an AI chatbot integrated into VSCode.
+- Inside VSCode you give a prompt to the chatbot and the chatbot generates code snippets
+- You can copy the snippets, modify few things if required like adding the apikey etc. and add to your application.
+- And your app now have Identity and Access Managment Supported by LoginRadius.
+
+## How to Run the extension
+---
+
+- Install this extension from the marketplace.
+- open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `LRBuddy: chat`
+- This opens a new window with a chatbox.
+- Enter the prompt to get code snippet like `Code for Forgot Password`
+
+## Contributing
+---
+
+See [the contributing guidelines](./contributing.md) for detailed instructions.
 
 
-## Run The Sample
+## License
+---
 
-```bash
-# Copy sample extension locally
-npx degit microsoft/vscode-webview-ui-toolkit-samples/frameworks/LRBuddy-svelte LRBuddy
+The code is licensed under [MIT License](./LICENSE.txt)
 
-# Navigate into sample directory
-cd LRBuddy
 
-# Install dependencies for both the extension and webview UI source code
-npm run install:all
+## FAQ
+---
 
-# Build webview UI source code
-npm run build:webview
+- ***How to test locally?*** Refer [setup docs](./setup.md)
+- ***How to clear chat?*** Type `clear` in chatbox and press `Enter`.
+- ***DO I need to pay to try this?*** It is completely free and open source.
 
-# Open sample in VS Code
-code .
-```
 
-Once the sample is open inside VS Code you can run the extension by doing the following:
 
-1. Press `F5` to open a new Extension Development Host window
-2. Inside the host window, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and type `Hello World (Svelte): Show`
+
+
+
