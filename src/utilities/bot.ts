@@ -47,7 +47,7 @@ LRObject.init("registration",registration_options);
 })
 
 
-Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
+// Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
 
 <div id="registration-container"></div>`]
 );
@@ -83,7 +83,7 @@ var  LRObject = new LoginRadiusV2(commonOptions);
     
     `,
 
-    `Copy the code below and paste it before the </head> tag.
+    `// Copy the code below and paste it before the </head> tag.
     
     var login_options = {};
   login_options.onSuccess = function(response) {
@@ -100,7 +100,7 @@ var  LRObject = new LoginRadiusV2(commonOptions);
   LRObject.init("login",login_options);
   })
     `,
-    `Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
+    `// Copy the code below and paste it after the <body> tag. Place it where you want the widget to display on your web page.
     <div id="login-container"></div>`]
 
 
