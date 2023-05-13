@@ -2,6 +2,7 @@
   "name": "lrbuddy",
   "displayName": "LRBuddy-Beta",
   "description": "A chatbot to help you integrate LoginRadius",
+  "repository": "https://github.com/loginradius-hackathon/lr-hackathon-lrbuddy",
   "version": "0.0.1",
   "publisher": "LRB",
   "icon": "images/LRBuddy.png",
