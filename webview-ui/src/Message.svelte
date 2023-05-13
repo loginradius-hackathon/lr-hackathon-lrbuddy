@@ -1,14 +1,20 @@
 <script lang="ts">
-  import { provideVSCodeDesignSystem, vsCodeButton, vsCodeTextField,vsCodeDivider } from "@vscode/webview-ui-toolkit";
+  import {
+    provideVSCodeDesignSystem,
+    vsCodeButton,
+    vsCodeTextField,
+    vsCodeDivider,
+  } from "@vscode/webview-ui-toolkit";
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
   import { msgStore } from "./store";
   import { tick } from "svelte/internal";
+  import Copy from "./Copy.svelte";
 
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
   // syntax below.
-  provideVSCodeDesignSystem().register(vsCodeButton(), vsCodeTextField(),vsCodeDivider());
+  provideVSCodeDesignSystem().register(vsCodeButton(), vsCodeTextField(), vsCodeDivider());
 
   // To register more toolkit components, simply import the component
   // registration function and call it from within the register
@@ -30,9 +36,9 @@
       console.log({ message });
       switch (message.command) {
         case "bot_msg":
-          let answer = message?.text?.answer ;
+          let answer = message?.text?.answer;
           let success = true;
-          if(!answer ) {
+          if (!answer) {
             answer = ["I didn't get you 😞, can you try with a different prompt"];
             success = false;
           }
@@ -41,7 +47,7 @@
             return {
               by: "bot",
               msg,
-              success
+              success,
             };
           });
           $msgStore = [...$msgStore, ...result];
@@ -54,10 +60,6 @@
       El.scrollTo({ top: El.scrollHeight, behavior: "smooth" });
     });
   });
-
-  function copyToClipboard(data) {
-    navigator.clipboard.writeText(data);
-  }
 </script>
 
 <div class="msgs" id="msgs">
@@ -70,7 +72,7 @@
         </code>
       </pre>
       {#if data.by === "bot" && data.success}
-       <vscode-button class="copy" on:click={() => copyToClipboard(data.msg)}>copy</vscode-button>
+        <Copy msg={data.msg} />
       {/if}
     </div>
   {/each}
@@ -82,12 +84,13 @@
     height: 700px;
     overflow: scroll;
   }
-  pre{
+  pre {
     margin: 0px 0px;
     padding: 0px 0px;
     font-size: larger;
   }
-  pre, code {
+  pre,
+  code {
     white-space: pre-line;
   }
   .usermsg,
@@ -97,7 +100,7 @@
     margin-right: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom:5px;
+    padding-bottom: 5px;
     text-align: left;
     width: 80%;
     border-radius: 10px;
@@ -115,8 +118,5 @@
     border: 1px solid var(--vscode-editor-foreground);
     border-radius: 10px;
   }
-  .copy {
-   margin-top: 5px;
-    align-self: flex-end;
-  }
+  
 </style>
