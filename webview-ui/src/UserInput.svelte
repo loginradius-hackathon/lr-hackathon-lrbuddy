@@ -27,7 +27,11 @@
   function handleHowdyClick() {
     console.log("inside handle howdy click")
     console.log({"user input": userInput.value})
-    
+    if(userInput.value?.toLowerCase().trim() === 'clear'){
+      userInput.value =""
+      $msgStore = [];
+      return;
+    }
     $msgStore = [...$msgStore,{by: 'user', msg: userInput.value}]
     vscode.postMessage({
       command: "user_msg",
@@ -54,15 +58,16 @@
 
 <div class="user_input">
 
-  <vscode-text-field bind:this={userInput} size="50" placeholder="Let's integrate LR :) " >
-  <span slot="start" class="codicon codicon-git-merge"></span></vscode-text-field>
-  <br/>
+  <vscode-text-field bind:this={userInput} size="50" autofocus=true placeholder="Let's integrate LR :) " >
+  </vscode-text-field>
   <vscode-button on:click={handleHowdyClick} >Send</vscode-button>
 </div>
 
 
 <style>
 .user_input {
-  display: flex
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 </style>

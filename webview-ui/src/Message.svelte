@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { provideVSCodeDesignSystem, vsCodeButton, vsCodeTextField } from "@vscode/webview-ui-toolkit";
+  import { provideVSCodeDesignSystem, vsCodeButton, vsCodeTextField,vsCodeDivider } from "@vscode/webview-ui-toolkit";
   import { vscode } from "./utilities/vscode";
   import { onMount } from "svelte";
   import { msgStore } from "./store";
@@ -8,7 +8,7 @@
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
   // syntax below.
-  provideVSCodeDesignSystem().register(vsCodeButton(), vsCodeTextField());
+  provideVSCodeDesignSystem().register(vsCodeButton(), vsCodeTextField(),vsCodeDivider());
 
   // To register more toolkit components, simply import the component
   // registration function and call it from within the register
@@ -30,11 +30,18 @@
       console.log({ message });
       switch (message.command) {
         case "bot_msg":
-          const answer = message?.text?.answer || ["I didn't get you, can you try with a different prompt"];
+          let answer = message?.text?.answer ;
+          let success = true;
+          if(!answer ) {
+            answer = ["I didn't get you 😞, can you try with a different prompt"];
+            success = false;
+          }
+
           const result = answer.map((msg) => {
             return {
               by: "bot",
               msg,
+              success
             };
           });
           $msgStore = [...$msgStore, ...result];
@@ -62,7 +69,7 @@
           {data.msg}
         </code>
       </pre>
-      {#if data.by === "bot"}
+      {#if data.by === "bot" && data.success}
        <vscode-button class="copy" on:click={() => copyToClipboard(data.msg)}>copy</vscode-button>
       {/if}
     </div>
@@ -72,12 +79,13 @@
 
 <style>
   .msgs {
-    height: 800px;
+    height: 700px;
     overflow: scroll;
   }
-  pre, div{
+  pre{
     margin: 0px 0px;
     padding: 0px 0px;
+    font-size: larger;
   }
   pre, code {
     white-space: pre-line;

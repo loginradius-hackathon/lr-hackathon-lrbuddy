@@ -67,8 +67,9 @@
   main {
     display: flex;
     flex-direction: column;
+    margin: 0px;
     
-    height: 800px;
+    height: 700px;
   }
   .msg {
     flex: 1;
@@ -77,6 +78,6 @@
   } */
   main{
 
-    margin: 4px;
+  
   }
 </style>
