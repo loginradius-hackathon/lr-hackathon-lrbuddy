@@ -37,8 +37,9 @@
       switch (message.command) {
         case "bot_msg":
           let answer = message?.text?.answer;
+          let confidence = message?.text?.score;
           let success = true;
-          if (!answer) {
+          if (!answer || confidence < 0.8 ) {
             answer = ["I didn't get you 😞, can you try with a different prompt"];
             success = false;
           }
