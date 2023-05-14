@@ -69,6 +69,7 @@ export class HelloWorldPanel {
           enableScripts: true,
           // Restrict the webview to only load resources from the `out` and `webview-ui/public/build` directories
           localResourceRoots: [Uri.joinPath(extensionUri, "out"), Uri.joinPath(extensionUri, "webview-ui/public/build")],
+          retainContextWhenHidden: true,
         }
       );
 
