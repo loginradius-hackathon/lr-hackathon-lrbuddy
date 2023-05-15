@@ -4,7 +4,9 @@
   import { onMount } from "svelte";
   import { msgStore } from "./store";
   let userInput;
- 
+  let random_placeholders =["Let's integrate LR :)", "Type 'clear' to clear chatbox", "type 'code for login' for login snippet", "type 'code for registration' for registration snippet"]
+  let placeholder = random_placeholders[0];
+
   // In order to use the Webview UI Toolkit web components they
   // must be registered with the browser (i.e. webview) using the
   // syntax below.
@@ -23,7 +25,13 @@
   // components at once, there's a handy convenience function:
   //
   // provideVSCodeDesignSystem().register(allComponents);
-
+  function generateRandom(min, max) {
+    let difference = max - min;
+    let rand = Math.random();
+    rand = Math.ceil(rand * difference);
+    rand = rand + min;
+    return rand;
+  }
   function handleHowdyClick() {
     console.log("inside handle howdy click")
     console.log({"user input": userInput.value})
@@ -52,15 +60,17 @@
         break;
     }
   };
+   setInterval(() => {
+      placeholder = random_placeholders[generateRandom(0,3)]
+    },2000);
+    
   });
 </script>
 
 
 <div class="user_input">
-
-  <vscode-text-field bind:this={userInput} size="50" autofocus=true placeholder="Let's integrate LR :) " >
-  </vscode-text-field>
-  <vscode-button on:click={handleHowdyClick} >Send</vscode-button>
+  <vscode-text-field bind:this={userInput} size="50" autofocus="true" {placeholder} />
+  <vscode-button on:click={handleHowdyClick}>Send</vscode-button>
 </div>
 
 
