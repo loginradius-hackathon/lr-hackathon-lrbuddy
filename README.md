@@ -13,6 +13,19 @@
 - This opens a new window with a chatbox.
 - Enter the prompt to get code snippet like `Code for Forgot Password`
 
+## Simplified Sequence Diagram
+
+  ![LRBuddy Sequence Diagram](./seq.png "LRBuddy Sequence Diagram")
+
+## Github Workflow
+- Runs when code is pushed to main branch.
+- The workflow 
+  - Train and Generate the NLP Model.
+  - Create webview from svelte.
+  - Model, Webview is packaged with Extension backend.
+  - It is published on VSCode Marketplace with patch version update scheme (0.0.9 -> 0,0.10)
+
+
 ## Contributing
 
 See [the contributing guidelines](./contributing.md) for detailed instructions.
