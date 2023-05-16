@@ -24,7 +24,7 @@ manager.addAnswer(
     <script> 
 var commonOptions = {};
 commonOptions.apiKey = '<APIKEY>';
-commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;commonOptions.verificationEmailTemplate='pawan.dixit@loginradius.com';commonOptions.verificationUrl='pawan.dixit@loginradius.com';
+commonOptions.appName = '<APPNAME>';commonOptions.debugMode=true;commonOptions.verificationEmailTemplate='';commonOptions.verificationUrl='';
 var  LRObject = new LoginRadiusV2(commonOptions);
 </script>
     `,
